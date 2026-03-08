@@ -101,7 +101,7 @@ CheXplain/
 - The **CheXplain Kaggle Dataset** (contains `src_v2/` + model weights)
 - Basic familiarity with running Jupyter notebooks
 
-> ⚠️ All pipeline notebooks are designed to run on **Kaggle** due to GPU and storage requirements. Local execution is possible only if you have 16GB+ VRAM.
+> **All pipeline notebooks are designed to run on **Kaggle** due to GPU and storage requirements. Local execution is possible only if you have 16GB+ VRAM.
 
 ---
 
@@ -164,7 +164,7 @@ Running on public URL: https://xxxxxxxx.gradio.live
 
 ---
 
-## 🧪 Test Samples
+## Test Samples
 
 Ready-to-use chest X-ray images are in the `test-samples/` folder:
 
@@ -185,7 +185,7 @@ test-samples/
 
 ### Model Training (Reproducing from scratch)
 
-> ⚠️ Requires the full **CheXpert dataset** (~439K images). Training takes ~5 hours per model on Kaggle GPU.
+> **Requires the full **CheXpert dataset** (~439K images). Training takes ~5 hours per model on Kaggle GPU.
 
 1. Add the [CheXpert dataset](https://www.kaggle.com/datasets/ashery/chexpert) to your Kaggle notebook
 2. Open the relevant training notebook from `notebooks/01-model-training/`
@@ -226,7 +226,7 @@ After downloading, place `.pth` files in the `models/` folder if running locally
 
 ## Local Setup (Optional)
 
-> ⚠️ Requires NVIDIA GPU with 16GB+ VRAM for Qwen2.5-3B. CPU-only mode will be extremely slow.
+> **Requires NVIDIA GPU with 16GB+ VRAM for Qwen2.5-3B. CPU-only mode will be extremely slow.
 
 ```bash
 # 1. Clone the repository
