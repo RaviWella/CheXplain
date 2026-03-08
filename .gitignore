@@ -1,0 +1,18 @@
+# Model weights (too large for Git)
+models/*.pth
+models/*.pt
+models/*.h5
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Kaggle
+*.json
+kaggle.json
+
+# OS files
+.DS_Store
+Thumbs.db
