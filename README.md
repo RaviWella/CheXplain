@@ -52,7 +52,7 @@ CheXplain/
 │   └── 📁 03-pipeline/              ← Full end-to-end systems
 │       ├── full-pipeline-densenet-qwen.ipynb   ← Core pipeline
 │       ├── full-pipeline-chatbot.ipynb          ← Pipeline + chatbot
-│       └── full-pipeline-ui.ipynb               ← Pipeline + Gradio UI ✅ MAIN
+│       └── full-pipeline-ui.ipynb               ← Pipeline + Gradio UI 
 │
 ├── 📁 src_v2/                       ← Python source modules
 │   ├── config.py
