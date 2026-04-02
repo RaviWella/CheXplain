@@ -9,12 +9,12 @@ The trained model weights are hosted on Kaggle and are **not stored in this repo
 All four final `.pth` checkpoint files are available from the Kaggle dataset:
 
 
-| Model | File | Macro-AUROC |
-|---|---|---|
-| DenseNet-121 *(selected)* | `densenet121_final.pth` | 0.8305 |
-| ResNet-50 | `resnet50_final.pth` | 0.8247 |
-| EfficientNet-B3 | `efficientnet_b3_final.pth` | 0.7890 |
-| ViT-B/16 | `vit_b16_final.pth` | 0.7960 |
+| Model | File | 
+|---|---|
+| DenseNet-121 *(selected)* | `densenet121_final.pth` | 
+| ResNet-50 | `resnet50_final.pth` | 
+| EfficientNet-B3 | `efficientnet_b3_final.pth` | 
+| ViT-B/16 | `vit_b16_final.pth` | 
 
 > Place downloaded `.pth` files into the `models/` folder before running any notebook.
 
