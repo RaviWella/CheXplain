@@ -61,7 +61,7 @@ CheXplain/
 │   └── 📁 03-pipeline/                  ← Full end-to-end systems
 │       ├── full-pipeline-densenet-qwen.ipynb  ← Core pipeline (no UI)
 │       ├── full-pipeline-chatbot.ipynb         ← Pipeline + chatbot only
-│       └── full-pipeline-ui.ipynb              ← Complete system with Gradio UI ✅ START HERE
+│       └── full-pipeline-ui.ipynb              ← Complete system with Gradio UI START HERE
 │
 ├── 📁 src/                              ← Python source modules
 │   ├── __init__.py
@@ -187,7 +187,7 @@ Click **"Run All"** or run each cell manually in this sequence:
 | **Cell 13** | Loads Qwen2.5-3B-Instruct model (~6 GB GPU) | ~2 min |
 | **Final Cell** | Launches the Gradio web interface | ~10 s |
 
-> ⏱ **Total startup time: approximately 3–4 minutes on P100 GPU.**
+>  **Total startup time: approximately 3–4 minutes on P100 GPU.**
 
 ---
 
