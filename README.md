@@ -249,12 +249,12 @@ test-samples/
 
 > Requires the full [CheXpert dataset](https://www.kaggle.com/datasets/ashery/chexpert) (~439K images). Training takes ~5 hours per model on Kaggle GPU.
 
-| Model | Final Training Notebook (Kaggle) | Macro-AUROC |
-|---|---|---|
-| ResNet-50 | [final-train-resnet50](https://www.kaggle.com/code/d1nushi/final-train-resnet50) | 0.8247 |
-| DenseNet-121 | [final-train-densenet121](https://www.kaggle.com/code/d1nushi/final-train-densenet121) | 0.8305 |
-| EfficientNet-B3 | [final-train-efficientnet-b3](https://www.kaggle.com/code/ravinduwellalage2/final-train-efficientnet-b3) | 0.7890 |
-| ViT-B/16 | [final-train-VIT-B16](https://www.kaggle.com/code/ravinduwellalage2/final-train-vit-b16) | 0.7960 |
+| Model | Final Training Notebook (Kaggle) | 
+|---|---|
+| ResNet-50 | [final-train-resnet50](https://www.kaggle.com/code/d1nushi/final-train-resnet50) | 
+| DenseNet-121 | [final-train-densenet121](https://www.kaggle.com/code/d1nushi/final-train-densenet121) | 
+| EfficientNet-B3 | [final-train-efficientnet-b3](https://www.kaggle.com/code/ravinduwellalage2/final-train-efficientnet-b3) | 
+| ViT-B/16 | [final-train-VIT-B16](https://www.kaggle.com/code/ravinduwellalage2/final-train-vit-b16) | 
 
 Steps:
 1. Open the relevant notebook link above on Kaggle
