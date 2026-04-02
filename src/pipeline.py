@@ -51,15 +51,15 @@ class CheXplainPipeline:
             try:
                 print("   Loading LLM for explanations...")
                 self.llm_explainer = LLMExplainer(use_quantization=True)
-                print("   ✅ LLM ready")
+                print("  LLM ready")
             except Exception as e:
-                print(f"   ⚠️ LLM failed to load: {e}")
+                print(f"   LLM failed to load: {e}")
                 print("   → Falling back to template explanations")
                 self.llm_explainer = None
         else:
             self.llm_explainer = None
         
-        print("✅ Pipeline initialized successfully!\n")
+        print("Pipeline initialized successfully!\n")
     
     def process_image(
         self,
@@ -76,25 +76,25 @@ class CheXplainPipeline:
         Returns:
             Dict containing all results
         """
-        print(f"📊 Processing: {Path(image_path).name}")
+        print(f"Processing: {Path(image_path).name}")
         print("=" * 60)
         
         # Step 1: Load and preprocess image
-        print("1️⃣  Loading image...")
+        print("1️Loading image...")
         image, image_tensor = self._load_image(image_path)
-        print("   ✅ Image loaded")
+        print("   Image loaded")
         
         # Step 2: Get predictions
-        print("2️⃣  Running disease detection...")
+        print("2️Running disease detection...")
         predictions, all_probabilities = self._get_predictions(image_tensor)
         positive_findings = {
             disease: conf for disease, conf in predictions.items()
             if conf >= confidence_threshold
         }
-        print(f"   ✅ Found {len(positive_findings)} positive finding(s)")
+        print(f"   Found {len(positive_findings)} positive finding(s)")
         
         # Step 3: Generate Grad-CAMs for positive findings
-        print("3️⃣  Generating visual explanations (Grad-CAM)...")
+        print("3️Generating visual explanations (Grad-CAM)...")
         heatmaps = {}
         overlays = {}
         behaviors = {}
@@ -123,14 +123,14 @@ class CheXplainPipeline:
                 )
                 behaviors[disease] = behavior
                 
-                print(f"   ✅ {disease}: Grad-CAM generated")
+                print(f"  {disease}: Grad-CAM generated")
         else:
-            print("   ℹ️  No positive findings - creating negative view")
+            print("   ℹNo positive findings - creating negative view")
             overlay = self.visualizer.create_negative_overlay(image)
             overlays["negative"] = overlay
         
         # Step 4: Generate text explanations
-        print("4️⃣  Generating text explanations...")
+        print("Generating text explanations...")
         explanations = {}
         
         if len(positive_findings) > 0 and self.llm_explainer:
@@ -145,25 +145,25 @@ class CheXplainPipeline:
                         disease, confidence, behavior, "patient"
                     )
                 }
-                print(f"   ✅ {disease}: Explanations generated")
+                print(f" {disease}: Explanations generated")
         elif len(positive_findings) > 0:
             # Use fallback explanations
             explanations = self._generate_fallback_explanations(
                 positive_findings, behaviors
             )
-            print(f"   ⚠️  Using template explanations (LLM unavailable)")
+            print(f"  Using template explanations (LLM unavailable)")
         else:
             explanations = self._generate_negative_explanations()
-            print(f"   ℹ️  Generated negative finding explanation")
+            print(f"  Generated negative finding explanation")
         
         # Step 5: Create visualizations
-        print("5️⃣  Creating visualizations...")
+        print("Creating visualizations...")
         figures = self._create_visualizations(
             image, overlays, positive_findings, behaviors
         )
-        print("   ✅ Visualizations ready")
+        print("  Visualizations ready")
         
-        print("\n✅ Processing complete!")
+        print("\n Processing complete!")
         print("=" * 60)
         
         # Return complete results
@@ -330,11 +330,11 @@ class CheXplainPipeline:
             show_plots: Whether to display matplotlib figures
         """
         print("\n" + "=" * 80)
-        print("📋 CHEXPLAIN ANALYSIS RESULTS")
+        print("CHEXPLAIN ANALYSIS RESULTS")
         print("=" * 80)
         
         # Predictions summary
-        print("\n🔍 PREDICTIONS:")
+        print("\nPREDICTIONS:")
         print("-" * 80)
         positive = results["positive_findings"]
         if len(positive) > 0:
@@ -348,7 +348,7 @@ class CheXplainPipeline:
         
         if len(positive) > 0:
             print("\n" + "=" * 80)
-            print("👨‍⚕️ CLINICIAN EXPLANATIONS")
+            print("CLINICIAN EXPLANATIONS")
             print("=" * 80)
             for disease in positive.keys():
                 if disease in explanations:
@@ -357,7 +357,7 @@ class CheXplainPipeline:
                     print(explanations[disease]["clinician"])
             
             print("\n" + "=" * 80)
-            print("🧑 PATIENT EXPLANATIONS")
+            print("PATIENT EXPLANATIONS")
             print("=" * 80)
             for disease in positive.keys():
                 if disease in explanations:
@@ -366,7 +366,7 @@ class CheXplainPipeline:
                     print(explanations[disease]["patient"])
         else:
             print("\n" + "=" * 80)
-            print("📄 SUMMARY")
+            print("SUMMARY")
             print("=" * 80)
             print("\nClinician:")
             print("-" * 80)
@@ -399,13 +399,13 @@ class CheXplainPipeline:
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
         
-        print(f"\n💾 Saving results to: {output_path}")
+        print(f"\nSaving results to: {output_path}")
         
         # Save figures
         for name, fig in results["figures"].items():
             save_path = output_path / f"{image_name}_{name}.png"
             fig.savefig(save_path, dpi=300, bbox_inches='tight')
-            print(f"   ✅ Saved: {save_path.name}")
+            print(f"   Saved: {save_path.name}")
         
         # Save explanations as text
         if len(results["positive_findings"]) > 0:
@@ -433,9 +433,9 @@ class CheXplainPipeline:
                     f.write("-" * 80 + "\n")
                     f.write(expl["patient"] + "\n")
             
-            print(f"   ✅ Saved: {report_path.name}")
+            print(f"   Saved: {report_path.name}")
         
-        print("✅ All results saved!\n")
+        print("All results saved!\n")
 
 
 # Convenience function

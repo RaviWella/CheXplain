@@ -5,23 +5,17 @@ Enhanced Configuration for V2 Architecture
 import torch
 from pathlib import Path
 
-# ============================================================================
 # PATHS
-# ============================================================================
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 MODEL_DIR = BASE_DIR / "models"
 OUTPUT_DIR = BASE_DIR / "outputs"
 
-# ============================================================================
 # DEVICE CONFIGURATION
-# ============================================================================
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using device: {DEVICE}")
 
-# ============================================================================
 # DISEASE LABELS (14 CheXpert/ChestX-ray14 diseases)
-# ============================================================================
 LABEL_NAMES = [
     "Atelectasis",
     "Cardiomegaly",
@@ -39,9 +33,7 @@ LABEL_NAMES = [
     "Pneumothorax"
 ]
 
-# ============================================================================
 # MODEL CONFIGURATION
-# ============================================================================
 ACTIVE_MODEL = "resnet"  # or "densenet"
 
 MODEL_CONFIGS = {
@@ -59,24 +51,18 @@ MODEL_CONFIGS = {
     }
 }
 
-# ============================================================================
 # GRAD-CAM CONFIGURATION
-# ============================================================================
 GRADCAM_LAYER = {
     "resnet": "backbone.layer4",
     "densenet": "backbone.features.denseblock4"
 }
 
-# ============================================================================
 # PREDICTION THRESHOLDS
-# ============================================================================
 CONFIDENCE_THRESHOLD = 0.5  # Diseases above this are reported
 LOW_CONFIDENCE = 0.3        # Below this = likely negative
 HIGH_CONFIDENCE = 0.7       # Above this = high certainty
 
-# ============================================================================
 # LLM CONFIGURATION
-# ============================================================================
 # LLM Configuration - FLAN-T5 for Local Development
 LLM_CONFIG = {
     "model_name": "google/flan-t5-large",  # CPU-friendly, 780MB
@@ -99,9 +85,7 @@ LLM_CONFIG = {
 }
 
 
-# ============================================================================
 # VISUALIZATION CONFIGURATION
-# ============================================================================
 VISUALIZATION = {
     "colormap": "jet",  # For heatmaps
     "alpha": 0.4,       # Overlay transparency
@@ -109,9 +93,7 @@ VISUALIZATION = {
     "figsize": (14, 7)
 }
 
-# ============================================================================
 # ANATOMICAL REGIONS (for spatial analysis)
-# ============================================================================
 LUNG_REGIONS = {
     "upper_right": {"x": [0.5, 1.0], "y": [0.0, 0.33]},
     "middle_right": {"x": [0.5, 1.0], "y": [0.33, 0.66]},
@@ -122,9 +104,7 @@ LUNG_REGIONS = {
     "cardiac": {"x": [0.3, 0.7], "y": [0.4, 0.8]},
 }
 
-# ============================================================================
 # PROMPT TEMPLATES
-# ============================================================================
 CLINICIAN_PROMPT_TEMPLATE = """You are a radiologist AI assistant providing technical explanations.
 
 **X-Ray Analysis:**
@@ -160,29 +140,5 @@ Generate a patient-friendly explanation (120-150 words) that:
 
 Write at an 8th-grade reading level. Be warm and supportive."""
 
-# ============================================================================
-# MEDICAL DOMAIN KNOWLEDGE
-# ============================================================================
-DISEASE_INFO = {
-    "Atelectasis": {
-        "description": "Partial lung collapse",
-        "severity": "moderate",
-        "common_causes": ["mucus plug", "tumor", "post-surgery"],
-        "typical_location": ["lower lobes"]
-    },
-    "Cardiomegaly": {
-        "description": "Enlarged heart",
-        "severity": "moderate",
-        "common_causes": ["hypertension", "heart failure"],
-        "typical_location": ["cardiac silhouette"]
-    },
-    "Pneumonia": {
-        "description": "Lung infection with consolidation",
-        "severity": "high",
-        "common_causes": ["bacterial", "viral", "aspiration"],
-        "typical_location": ["any lobe"]
-    },
-    # Add more as needed...
-}
 
 print("Configuration loaded successfully!")

@@ -1,12 +1,35 @@
-# Trained Models
+# CheXplain - Trained Model Weights
 
-The trained model weights are hosted on Kaggle (not stored in this repository due to file size).
+The trained model weights are hosted on Kaggle and are **not stored in this repository** due to file size constraints.
 
-**Download from Kaggle:**
-https://www.kaggle.com/datasets/ravinduwellalage2/xai-chest-x-ray-project-final-year
+---
 
-Models available:
-- `denseNet121_v2.pth` - DenseNet-121 (best model, AUROC: 0.8247)
-- `efficientNet.pth` - EfficientNet-B0
+## Trained Model Weights (Kaggle Dataset)
 
-Place downloaded `.pth` files into this `models/` folder before running notebooks.
+All four final `.pth` checkpoint files are available from the Kaggle dataset:
+
+
+| Model | File | Macro-AUROC |
+|---|---|---|
+| DenseNet-121 *(selected)* | `densenet121_final.pth` | 0.8305 |
+| ResNet-50 | `resnet50_final.pth` | 0.8247 |
+| EfficientNet-B3 | `efficientnet_b3_final.pth` | 0.7890 |
+| ViT-B/16 | `vit_b16_final.pth` | 0.7960 |
+
+> Place downloaded `.pth` files into the `models/` folder before running any notebook.
+
+---
+
+## Training Notebooks (Kaggle)
+
+The full training code for each model is available as a public Kaggle notebook:
+
+| Model | Notebook |
+|---|---|
+| ResNet-50 | [final-train-resnet50](https://www.kaggle.com/code/d1nushi/final-train-resnet50) |
+| DenseNet-121 | [final-train-densenet121](https://www.kaggle.com/code/d1nushi/final-train-densenet121) |
+| EfficientNet-B3 | [final-train-efficientnet-b3](https://www.kaggle.com/code/ravinduwellalage2/final-train-efficientnet-b3) |
+| ViT-B/16 | [final-train-VIT-B16](https://www.kaggle.com/code/ravinduwellalage2/final-train-vit-b16) |
+
+---
+
